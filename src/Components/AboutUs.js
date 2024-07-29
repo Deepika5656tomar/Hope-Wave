@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import Navigation from './Navigation';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function AboutUs() {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredTeamMember, setHoveredTeamMember] = useState(null);
 
   const getCardStyle = (isHovered) => ({
     width: '100%',
@@ -16,8 +20,8 @@ export default function AboutUs() {
     position: 'relative',
     overflow: 'hidden',
     borderRadius: '15px',
-    background: 'linear-gradient(145deg, #333333, #000000)',
-    color: '#fff'
+    background: isHovered ? 'linear-gradient(145deg, #444444, #111111)' : 'linear-gradient(145deg, #333333, #000000)',
+    color: '#fff',
   });
 
   const getReflectionStyle = () => ({
@@ -32,9 +36,42 @@ export default function AboutUs() {
     zIndex: -1,
   });
 
+  const handleMouseEnter = (index) => {
+    setHoveredCard(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredCard(null);
+  };
+
   const handleTouchStart = (index) => {
     setHoveredCard(index);
   };
+
+  const handleTouchEnd = () => {
+    setHoveredCard(null);
+  };
+
+  const teamMembers = [
+    { name: 'Divyanshu', image: 'https://raw.githubusercontent.com/divyanshu0212/htmlbasic/main/DRS_upscl-removebg-preview.png',
+      github: 'https://github.com/Divyanshu-RS', email: 'mailto:divyanshu@mail.com', linkedin: 'https://www.linkedin.com/in/Divyanshu-RS' 
+    },
+    { name: 'Aastha', image: 'https://raw.githubusercontent.com/divyanshu0212/donotdelet/main/aastha_dd-w1EBCmLSA-transformed_upscl-removebg-preview.png?token=GHSAT0AAAAAACTXOEFHHX53ZDBHF5MX77WWZVH65NQ',
+      github: 'https://github.com/Aastha-RS', email: 'mailto:aastha@mail.com', linkedin: 'https://www.linkedin.com/in/Aastha-RS' 
+    },
+    { name: 'Merdul', image: 'https://raw.githubusercontent.com/divyanshu0212/donotdelet/main/merdul__1__upscl-removebg-preview.png?token=GHSAT0AAAAAACTXOEFHS4RDH3RQAAPHRBYSZVH66JA',
+      github: 'https://github.com/Merdul-RS', email: 'mailto:merdul@mail.com', linkedin: 'https://www.linkedin.com/in/Merdul-RS' 
+    },
+    { name: 'Deepika', image: 'https://raw.githubusercontent.com/divyanshu0212/donotdelet/main/deepika_pr-transformed_upscl-removebg-preview.png?token=GHSAT0AAAAAACTXOEFGGMYOS6DVKYFWYIXQZVH7C4A', 
+      github: 'https://github.com/DRS4-RS', email: 'mailto:drs4@mail.com', linkedin: 'https://www.linkedin.com/in/DRS4-RS' 
+    },
+    { name: 'Aman', image: 'https://raw.githubusercontent.com/divyanshu0212/donotdelet/main/aman_prp-transformed_upscl-removebg-preview.png?token=GHSAT0AAAAAACTXOEFGWFJNSXSSXCC5H7OIZVH7ERQ',
+      github: 'https://github.com/DRS5-RS', email: 'mailto:drs5@mail.com', linkedin: 'https://www.linkedin.com/in/DRS5-RS' 
+    },
+    { name: 'Love', image: 'https://raw.githubusercontent.com/divyanshu0212/donotdelet/main/love_akgec_prp-transformed_upscl-removebg-preview.png?token=GHSAT0AAAAAACTXOEFHG6BVFW6KB4CWHFDQZVH7FHA', 
+      github: 'https://github.com/DRS6-RS', email: 'mailto:drs6@mail.com', linkedin: 'https://www.linkedin.com/in/DRS6-RS' 
+    },
+  ];
 
   return (
     <>
@@ -56,7 +93,102 @@ export default function AboutUs() {
       >
         <div className="row my-4">
           <div className='col-lg-12'>
-            <Card style={getCardStyle(hoveredCard === 0)} onMouseEnter={() => setHoveredCard(0)} onMouseLeave={() => setHoveredCard(null)} onTouchStart={() => handleTouchStart(0)} onTouchEnd={() => setHoveredCard(null)}>
+            <Card style={{ ...getCardStyle(false), transform: 'none', boxShadow: 'none' }}>
+              <Card.Body>
+                {/* New card added here */}
+                <Card
+                  style={getCardStyle(hoveredCard === 2)}
+                  onMouseEnter={() => setHoveredCard(2)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                  onTouchStart={() => handleTouchStart(2)}
+                  onTouchEnd={() => setHoveredCard(null)}
+                >
+                  <Card.Body>
+                    <h5 className='text-center'><strong>Who We Are?</strong></h5><br />
+                    <p>
+                      Hope Wave No Poverty is a movement led by a group of enthusiastic people who think that working together can make a big difference, not merely an organization. With the unifying objective of ending poverty, our varied team brings together experts from a range of disciplines, including social work, economics, healthcare, and education.
+                    </p>
+                  </Card.Body>
+                  <div style={getReflectionStyle()}></div>
+                </Card>
+
+                {/* Existing "Mind's behind" section */}
+                <h4 className='text-center'><strong>Mind's behind Hope Wave No Poverty</strong></h4><br />
+                <div className="row">
+                  {teamMembers.map((member, index) => (
+                    <div className="col-md-4 col-sm-6" key={index}>
+                      <Card
+                        className="mt-3"
+                        style={getCardStyle(hoveredTeamMember === index)}
+                        onMouseEnter={() => setHoveredTeamMember(index)}
+                        onMouseLeave={() => setHoveredTeamMember(null)}
+                        onTouchStart={() => setHoveredTeamMember(index)}
+                        onTouchEnd={() => setHoveredTeamMember(null)}
+                      >
+                        <Card.Img
+                          variant="top"
+                          src={member.image}
+                          style={{
+                            borderTopLeftRadius: '10px',
+                            borderTopRightRadius: '10px',
+                            height: '350px',
+                            objectFit: 'cover',
+                            filter: hoveredTeamMember === index ? 'none' : 'grayscale(100%)',
+                            transition: 'filter 0.3s ease-in-out'
+                          }}
+                        />
+                        <Card.Body>
+                          <Card.Title>{member.name}</Card.Title>
+                          <Button
+                            variant="outline-light"
+                            className="m-1"
+                            href={member.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FontAwesomeIcon icon={faGithub} />
+                          </Button>
+                          <Button
+                            variant="outline-light"
+                            className="m-1"
+                            href={member.email}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FontAwesomeIcon icon={faEnvelope} />
+                          </Button>
+                          <Button
+                            variant="outline-light"
+                            className="m-1"
+                            href={member.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FontAwesomeIcon icon={faLinkedin} />
+                          </Button>
+                        </Card.Body>
+                        <div style={getReflectionStyle()}></div>
+                      </Card>
+                    </div>
+                  ))}
+                </div>
+              </Card.Body>
+              <div style={getReflectionStyle()}></div>
+            </Card>
+          </div>
+        </div>
+
+{/* About us */}
+
+        <div className="row my-4">
+          <div className='col-lg-12'>
+            <Card
+              style={getCardStyle(hoveredCard === 0)}
+              onMouseEnter={() => setHoveredCard(0)}
+              onMouseLeave={() => setHoveredCard(null)}
+              onTouchStart={() => handleTouchStart(0)}
+              onTouchEnd={() => setHoveredCard(null)}
+            >
               <Card.Body>
                 <h3 className='text-center'><strong>About Us</strong></h3><br />
                 <p>
@@ -68,14 +200,19 @@ export default function AboutUs() {
           </div>
         </div>
 
-<div className="row my-4">
+        <div className="row my-4">
           <div className='col-lg-12'>
-            <Card style={getCardStyle(hoveredCard === 2)} onMouseEnter={() => setHoveredCard(2)} onMouseLeave={() => setHoveredCard(null)} onTouchStart={() => handleTouchStart(2)} onTouchEnd={() => setHoveredCard(null)}>
+            <Card
+              style={getCardStyle(hoveredCard === 1)}
+              onMouseEnter={() => setHoveredCard(1)}
+              onMouseLeave={() => setHoveredCard(null)}
+              onTouchStart={() => handleTouchStart(1)}
+              onTouchEnd={() => setHoveredCard(null)}
+            >
               <Card.Body>
-                <h5 className='text-center'><strong>Who We Are?</strong></h5><br />
+                <h5 className='text-center'><strong>Our Vision</strong></h5><br />
                 <p>
-                 Hope Wave No Poverty is a movement led by a group of enthusiastic people who think that working together can make a big difference, not merely an organization. With the unifying objective of ending poverty, our varied team brings together experts from a range of disciplines, including social work, economics, healthcare, and education.
-
+                  Think about a society in which poverty has faded into the past and has been replaced with prosperous neighborhoods, capable people, and equal opportunity. We envision a world where every individual is empowered to reach their full potential, regardless of their background or circumstance. Our vision is a world where economic equality and human dignity are fundamental principles, and every person has the opportunity to lead a fulfilling and prosperous life.
                 </p>
               </Card.Body>
               <div style={getReflectionStyle()}></div>
@@ -85,26 +222,17 @@ export default function AboutUs() {
 
         <div className="row my-4">
           <div className='col-lg-12'>
-            <Card style={getCardStyle(hoveredCard === 1)} onMouseEnter={() => setHoveredCard(1)} onMouseLeave={() => setHoveredCard(null)} onTouchStart={() => handleTouchStart(1)} onTouchEnd={() => setHoveredCard(null)}>
-              <Card.Body>
-                <h5 className='text-center'><strong>Our Vision</strong></h5><br />
-                <p>
-                 Think about a society in which poverty has faded into the past and has been replaced with prosperous neighborhoods, capable people, and fair opportunities for all. We at Hope Wave No Poverty are committed to using sustainable development projects to end poverty and improve communities. Our commitment rests in equipping individuals and families with the necessary means to escape the cycle of poverty, so enabling them to live honorable and satisfying lives.
-
-                </p>
-              </Card.Body>
-              <div style={getReflectionStyle()}></div>
-            </Card>
-          </div>
-        </div> 
-
-        <div className="row my-4">
-          <div className='col-lg-12'>
-            <Card style={getCardStyle(hoveredCard === 3)} onMouseEnter={() => setHoveredCard(3)} onMouseLeave={() => setHoveredCard(null)} onTouchStart={() => handleTouchStart(3)} onTouchEnd={() => setHoveredCard(null)}>
+            <Card
+              style={getCardStyle(hoveredCard === 3)}
+              onMouseEnter={() => setHoveredCard(3)}
+              onMouseLeave={() => setHoveredCard(null)}
+              onTouchStart={() => handleTouchStart(3)}
+              onTouchEnd={() => setHoveredCard(null)}
+            >
               <Card.Body>
                 <h5 className='text-center'><strong>Our Approach</strong></h5><br />
                 <p>
-                  Since poverty has many facets and ingrained roots, we support a comprehensive strategy to solve it. Our initiatives target the core causes of poverty by emphasizing community development, healthcare, education, and economic empowerment. Through addressing these interrelated factors, our goal is to bring about long-lasting change that will improve whole communities.
+                  We think it takes a multifaceted strategy to combat poverty. Our work covers a wide range of initiatives, including employment training, healthcare access, education, and more. We want to give individuals the resources they need to create better lives for themselves and their communities through our collaborative initiatives and innovative solutions.
                 </p>
               </Card.Body>
               <div style={getReflectionStyle()}></div>
