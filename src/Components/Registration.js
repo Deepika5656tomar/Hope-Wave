@@ -32,6 +32,7 @@ export default function Registration() {
   });
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const [showPopup, setShowPopup] = useState(false); // Added state for popup
 
   useEffect(() => {
     const { password, confirmPassword, fullname, email } = formData;
@@ -131,6 +132,16 @@ export default function Registration() {
 
   const handleTouchStart = (card) => setHoveredCard(card);
 
+  // Modified function to handle form submission and show popup
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+      window.location.href = '/Home';
+    }, 2000); // Popup stays for 2 seconds
+  };
+
   return (
     <>
       <Navigation />
@@ -149,7 +160,7 @@ export default function Registration() {
                 
                 <h2 className="text-center">Register</h2>
                 <br></br>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <label htmlFor="fullname">Name <span className="text-danger">*</span></label>
                     <div style={{ position: 'relative' }}>
@@ -225,16 +236,32 @@ export default function Registration() {
                     style={{ borderRadius: '20px', padding: '0.5rem 1.5rem' }}
                     disabled={isButtonDisabled}
                   >
-                   <a href='/Login' className='text-decoration-none text-light'> Register</a>
+                    Register
                   </button>
                 </form>
               </Card.Body>
               <div style={getReflectionStyle()}></div>
-<p id='text' style={{ textAlign: 'center' }}><br />Aready Registered, <span><a href="/Login" style={{ color: 'inherit', textDecoration: 'none' }}>Login here..</a></span></p>
+              <p id='text' style={{ textAlign: 'center' }}><br />Aready Registered, <span><a href="/Login" style={{ color: 'inherit', textDecoration: 'none' }}>Login here..</a></span></p>
             </Card>
           </Col>
         </Row>
       </div>
+      {showPopup && (
+        <div style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          backgroundColor: '#fff',
+          background: 'linear-gradient(145deg, #333333, #000000)',
+          color: '#fff',
+          padding: '1rem 2rem',
+          borderRadius: '10px',
+          zIndex: 9999,
+        }}>
+          Welcome to   Hope Wave No Poverty
+        </div>
+      )}
     </>
   );
 }
