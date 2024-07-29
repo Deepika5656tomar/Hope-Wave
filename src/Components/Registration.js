@@ -241,7 +241,7 @@ export default function Registration() {
                 </form>
               </Card.Body>
               <div style={getReflectionStyle()}></div>
-              <p id='text' style={{ textAlign: 'center' }}><br />Aready Registered, <span><a href="/Login" style={{ color: 'inherit', textDecoration: 'none' }}>Login here..</a></span></p>
+              <p id='text' style={{ textAlign: 'center' }}><br />Already Registered..!! <span><a href="/Login" style={{ color: 'inherit', textDecoration: 'none' }}>Login here..</a></span></p>
             </Card>
           </Col>
         </Row>
@@ -259,7 +259,7 @@ export default function Registration() {
           borderRadius: '10px',
           zIndex: 9999,
         }}>
-          Welcome to   Hope Wave No Poverty
+          Welcome to Hope Wave No Poverty
         </div>
       )}
     </>
