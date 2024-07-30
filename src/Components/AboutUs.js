@@ -131,7 +131,7 @@ export default function AboutUs() {
                           style={{
                             borderTopLeftRadius: '10px',
                             borderTopRightRadius: '10px',
-                            height: '400px',
+                            height: '500px',
                             objectFit: 'cover',
                             filter: hoveredTeamMember === index ? 'none' : 'grayscale(100%)',
                             transition: 'filter 0.3s ease-in-out'
