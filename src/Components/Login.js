@@ -6,6 +6,7 @@ import "./MainPage.css";
 export default function Login() {
   const [message, setMessage] = useState('');
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const emailInput = document.getElementById('inp1');
@@ -26,6 +27,11 @@ export default function Login() {
         setMessage('Please enter both email and password');
       } else {
         setMessage('');
+        setShowPopup(true); // Show popup on successful login attempt
+        setTimeout(() => {
+          setShowPopup(false);
+          window.location.href = '/Home';
+        }, 2000); // Popup stays for 2 seconds
       }
     }
 
@@ -102,20 +108,19 @@ export default function Login() {
                   <label htmlFor="password" className='ha'>Password:</label>
                   <input className='hi' type='password' id='inp2' placeholder="******" required style={{ width: '70%' }} />
                 </div>
-                <a href="/Home">
-                  <input type="button" id="inp3" value="LOGIN" disabled style={{
-                    width: '50%',
-                    padding: '0.5rem',
-                    borderRadius: '8px',
-                    backgroundColor: '#007bff',  // Set to your desired blue color
-                    color: '#fff',               // Ensure the text color is readable
-                    border: 'none'               // Remove default border
-                  }} />
-                </a>
-
-                {message && <p className='error-message' style={{ color: 'red', textAlign: 'center' }}>message</p>}
-               <p id='text' style={{ textAlign: 'center' }}><br />Forgot <span><a href="/Registration" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>Username / password?</a></span></p>
-              <a href="/Registration" target="_blank" rel="noopener noreferrer" id='a' style={{ display: 'block', textAlign: 'center'}}>Create your account->.</a>
+                <button id="inp3" disabled style={{
+                  width: '50%',
+                  padding: '0.5rem',
+                  borderRadius: '8px',
+                  backgroundColor: '#007bff',  // Set to your desired blue color
+                  color: '#fff',               // Ensure the text color is readable
+                  border: 'none'               // Remove default border
+                }}>
+                  LOGIN
+                </button>
+                {message && <p className='error-message' style={{ color: 'red', textAlign: 'center' }}>{message}</p>}
+                <p id='text' style={{ textAlign: 'center' }}><br />Forgot <span><a href="/Registration" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>Username / password?</a></span></p>
+                <a href="/Registration" target="_blank" rel="noopener noreferrer" id='a' style={{ display: 'block', textAlign: 'center' }}>Create your account->.</a>
               </Card.Body>
               <div style={getReflectionStyle()}></div>
             </Card>
@@ -143,6 +148,22 @@ export default function Login() {
           </Col>
         </Row>
       </div>
+      {showPopup && (
+        <div style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          backgroundColor: '#fff',
+          background: 'linear-gradient(145deg, #333333, #000000)',
+          color: '#fff',
+          padding: '1rem 2rem',
+          borderRadius: '10px',
+          zIndex: 9999,
+        }}>
+          Welcome back to Hope Wave No Poverty
+        </div>
+      )}
     </>
   );
 }
