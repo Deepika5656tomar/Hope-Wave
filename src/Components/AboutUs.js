@@ -53,27 +53,27 @@ export default function AboutUs() {
   };
 
   const teamMembers = [
-    { name: 'Divyanshu', image: 'https://raw.githubusercontent.com/divyanshu0212/htmlbasic/main/DRS_upscl-removebg-preview.png',
-      github: 'https://github.com/Divyanshu-RS', email: 'mailto:divyanshu@mail.com', linkedin: 'https://www.linkedin.com/in/Divyanshu-RS' 
+    { name: 'Divyanshu', image: 'https://raw.githubusercontent.com/divyanshu0212/htmlbasic/main/Divyanshu.png', 
+      github: 'https://github.com/Divyanshu-RS', email: 'mailto:divyanshuranjan.9999@gmail.com', linkedin: 'https://www.linkedin.com/in/divyanshu-ranjan-singh/',  title: 'Software Developer | Product Developer' 
     },
-    { name: 'Aastha', image: 'https://raw.githubusercontent.com/divyanshu0212/donotdelet/main/aastha_dd-w1EBCmLSA-transformed_upscl-removebg-preview.png?token=GHSAT0AAAAAACTXOEFHHX53ZDBHF5MX77WWZVH65NQ',
-      github: 'https://github.com/Aastha-RS', email: 'mailto:aastha@mail.com', linkedin: 'https://www.linkedin.com/in/Aastha-RS' 
+    { name: 'Aastha', image: 'https://raw.githubusercontent.com/divyanshu0212/htmlbasic/main/Aastha.png',
+      github: 'https://github.com/aastha64', email: 'mailto:aasthatayal2002@gmail.com', linkedin: 'https://www.linkedin.com/in/aastha5464/', title: 'Software Developer | Front-End Developer '
     },
-    { name: 'Merdul', image: 'https://raw.githubusercontent.com/divyanshu0212/donotdelet/main/merdul__1__upscl-removebg-preview.png?token=GHSAT0AAAAAACTXOEFHS4RDH3RQAAPHRBYSZVH66JA',
-      github: 'https://github.com/Merdul-RS', email: 'mailto:merdul@mail.com', linkedin: 'https://www.linkedin.com/in/Merdul-RS' 
+    { name: 'Merdul ' , image: 'https://raw.githubusercontent.com/divyanshu0212/htmlbasic/main/Mridul.png',
+      github: 'https://github.com/Merdulsh2003', email: 'mailto:merdulsharma2003@gmail.com', linkedin: 'https://www.linkedin.com/in/merdul-sharma-962324292/',  title: 'Software Engineer | Data Analyst'
     },
-    { name: 'Deepika', image: 'https://raw.githubusercontent.com/divyanshu0212/donotdelet/main/deepika_pr-transformed_upscl-removebg-preview.png?token=GHSAT0AAAAAACTXOEFGGMYOS6DVKYFWYIXQZVH7C4A', 
-      github: 'https://github.com/DRS4-RS', email: 'mailto:drs4@mail.com', linkedin: 'https://www.linkedin.com/in/DRS4-RS' 
+    { name: 'Deepika', image: 'https://raw.githubusercontent.com/divyanshu0212/htmlbasic/main/Deepika.png', 
+      github: 'https://github.com/Deepika5656tomar', email: 'mailto:tomardeepika2610@gmail.com', linkedin: 'https://www.linkedin.com/in/deepika-tomar-0ba3a8257/', title: 'UX Engineer | Technical Content Writer' 
     },
-    { name: 'Aman', image: 'https://raw.githubusercontent.com/divyanshu0212/donotdelet/main/aman_prp-transformed_upscl-removebg-preview.png?token=GHSAT0AAAAAACTXOEFGWFJNSXSSXCC5H7OIZVH7ERQ',
-      github: 'https://github.com/DRS5-RS', email: 'mailto:drs5@mail.com', linkedin: 'https://www.linkedin.com/in/DRS5-RS' 
+    { name: 'Aman', image: 'https://raw.githubusercontent.com/divyanshu0212/htmlbasic/main/Aman.png',
+      github: 'https://github.com/Amanrathore004', email: 'amanaryaratansingh@gmail.com', linkedin: 'https://www.linkedin.com/in/aman-rathore-492537269/', title: 'ML Engineer | Data Analyst'
     },
-    { name: 'Love', image: 'https://raw.githubusercontent.com/divyanshu0212/donotdelet/main/love_akgec_prp-transformed_upscl-removebg-preview.png?token=GHSAT0AAAAAACTXOEFHG6BVFW6KB4CWHFDQZVH7FHA', 
-      github: 'https://github.com/DRS6-RS', email: 'mailto:drs6@mail.com', linkedin: 'https://www.linkedin.com/in/DRS6-RS' 
+    { name: 'Love', image: 'https://raw.githubusercontent.com/divyanshu0212/htmlbasic/main/Love.png', 
+      github: 'https://github.com/myselflove', email: 'kloverohit7892@gmail.com', linkedin: 'https://www.linkedin.com/in/love-kumar666/', title: 'Software Engineer | Ui-Ux Designer'
     },
   ];
 
-  return (
+    return (
     <>
       <Navigation />
       <div
@@ -131,7 +131,7 @@ export default function AboutUs() {
                           style={{
                             borderTopLeftRadius: '10px',
                             borderTopRightRadius: '10px',
-                            height: '350px',
+                            height: '400px',
                             objectFit: 'cover',
                             filter: hoveredTeamMember === index ? 'none' : 'grayscale(100%)',
                             transition: 'filter 0.3s ease-in-out'
@@ -139,24 +139,12 @@ export default function AboutUs() {
                         />
                         <Card.Body>
                           <Card.Title>{member.name}</Card.Title>
-                          <Button
-                            variant="outline-light"
-                            className="m-1"
-                            href={member.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <FontAwesomeIcon icon={faGithub} />
-                          </Button>
-                          <Button
-                            variant="outline-light"
-                            className="m-1"
-                            href={member.email}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <FontAwesomeIcon icon={faEnvelope} />
-                          </Button>
+                          {/* Conditionally render the title if it exists */}
+                          {member.title && (
+                            <p style={{ color: '#fff', fontSize: '0.9rem', margin: '0.5rem 0' }}>
+                              {member.title}
+                            </p>
+                          )}
                           <Button
                             variant="outline-light"
                             className="m-1"
@@ -165,6 +153,26 @@ export default function AboutUs() {
                             rel="noopener noreferrer"
                           >
                             <FontAwesomeIcon icon={faLinkedin} />
+                          </Button> 
+                          
+                           <Button
+                            variant="outline-light"
+                            className="m-1"
+                            href={member.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FontAwesomeIcon icon={faGithub} />
+                          </Button>
+                          
+                           <Button
+                            variant="outline-light"
+                            className="m-1"
+                            href={member.email}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <FontAwesomeIcon icon={faEnvelope} />
                           </Button>
                         </Card.Body>
                         <div style={getReflectionStyle()}></div>
