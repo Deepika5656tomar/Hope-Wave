@@ -66,7 +66,7 @@ export default function AboutUs() {
       github: 'https://github.com/Deepika5656tomar', email: 'mailto:tomardeepika2610@gmail.com', linkedin: 'https://www.linkedin.com/in/deepika-tomar-0ba3a8257/', title: 'UX Engineer | Technical Content Writer' 
     },
     { name: 'Aman', image: 'https://raw.githubusercontent.com/divyanshu0212/htmlbasic/main/Aman.png',
-      github: 'https://github.com/Amanrathore004', email: 'amanaryaratansingh@gmail.com', linkedin: 'https://www.linkedin.com/in/aman-rathore-492537269/', title: 'ML Engineer | Data Analyst'
+      github: 'https://github.com/Amanrathore004', email: 'mailto:amanaryaratansingh@gmail.com', linkedin: 'https://www.linkedin.com/in/aman-rathore-492537269/', title: 'ML Engineer | Data Analyst'
     },
     { name: 'Love', image: 'https://raw.githubusercontent.com/divyanshu0212/htmlbasic/main/Love.png', 
       github: 'https://github.com/myselflove', email: 'kloverohit7892@gmail.com', linkedin: 'https://www.linkedin.com/in/love-kumar666/', title: 'Software Engineer | Ui-Ux Designer'
